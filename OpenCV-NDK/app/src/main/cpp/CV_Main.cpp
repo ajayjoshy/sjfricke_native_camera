@@ -122,7 +122,8 @@ void CV_Main::FaceDetect(cv::Mat &frame) {
  // equalizeHist( frame_gray, frame_gray );
 
  //-- Detect faces
-  face_cascade.detectMultiScale(frame_gray, faces, 1.18, 2, 0|CV_HAAR_SCALE_IMAGE, cv::Size(70, 70));
+ /*Commented to avoid gnu_stl dependency  error from precompiled opencv libs*/
+/*  face_cascade.detectMultiScale(frame_gray, faces, 1.18, 2, 0|CV_HAAR_SCALE_IMAGE, cv::Size(70, 70));*/
 
   for( size_t i = 0; i < faces.size(); i++ ) {
     cv::Point center(faces[i].x + faces[i].width*0.5, faces[i].y + faces[i].height*0.5);
@@ -134,7 +135,8 @@ void CV_Main::FaceDetect(cv::Mat &frame) {
     std::vector<cv::Rect> eyes;
 
     //-- In each face, detect eyes
-    eyes_cascade.detectMultiScale( faceROI, eyes, 1.2, 2, 0 |CV_HAAR_SCALE_IMAGE, cv::Size(45, 45) );
+      /*Commented to avoid gnu_stl dependency  error from precompiled opencv libs*/
+/*    eyes_cascade.detectMultiScale( faceROI, eyes, 1.2, 2, 0 |CV_HAAR_SCALE_IMAGE, cv::Size(45, 45) );*/
 
     for( size_t j = 0; j < eyes.size(); j++ ) {
       cv::Point center( faces[i].x + eyes[j].x + eyes[j].width*0.5, faces[i].y + eyes[j].y + eyes[j].height*0.5 );
